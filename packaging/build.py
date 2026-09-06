@@ -2,12 +2,14 @@
 from importlib import metadata
 from pathlib import Path
 import json
+import os
 import platform
 import shutil
 import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
+DIST = Path(os.environ.get("FLOWANALYSIS_DIST_DIR", str(ROOT / "dist"))).resolve()
 
 
 def main():
@@ -27,30 +29,30 @@ def main():
                     target.parent.mkdir(parents=True, exist_ok=True)
                     shutil.copy2(source, target)
     (licenses / "DEPENDENCIES.json").write_text(json.dumps(inventory, indent=2), encoding="utf-8")
-    subprocess.run([sys.executable, "-m", "PyInstaller", "--noconfirm", str(ROOT / "packaging/FlowAnalysis.spec")],
+    subprocess.run([sys.executable, "-m", "PyInstaller", "--noconfirm", "--distpath", str(DIST), str(ROOT / "packaging/FlowAnalysis.spec")],
                    cwd=ROOT, check=True)
     if sys.platform == "darwin":
         # Some distribution/cache systems retain UF_HIDDEN on wheel files.
         # Qt intentionally ignores hidden plugin files when enumerating plugins.
-        subprocess.run(["chflags", "-R", "nohidden", str(ROOT / "dist/FlowAnalysis.app")], check=True)
-        bundle = ROOT / "dist/FlowAnalysis.app"
+        subprocess.run(["chflags", "-R", "nohidden", str(DIST / "FlowAnalysis.app")], check=True)
+        bundle = DIST / "FlowAnalysis.app"
         for attribute in ["com.apple.FinderInfo", "com.apple.ResourceFork"]:
             subprocess.run(["xattr", "-dr", attribute, str(bundle)],
                            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         subprocess.run(["codesign", "--force", "--deep", "--sign", "-", str(bundle)], check=True)
         subprocess.run(["codesign", "--verify", "--deep", "--strict", str(bundle)], check=True)
-        output = ROOT / f"dist/FlowAnalysis-0.1.0-macOS-{platform.machine()}.zip"
+        output = DIST / f"FlowAnalysis-0.1.0-macOS-{platform.machine()}.zip"
         subprocess.run(["ditto", "-c", "-k", "--sequesterRsrc", "--keepParent",
-                        str(ROOT / "dist/FlowAnalysis.app"), str(output)], check=True)
+                        str(DIST / "FlowAnalysis.app"), str(output)], check=True)
     elif sys.platform == "win32":
-        output = shutil.make_archive(str(ROOT / "dist/FlowAnalysis-0.1.0-Windows-x64"), "zip",
-                                     ROOT / "dist", "FlowAnalysis")
+        output = shutil.make_archive(str(DIST / "FlowAnalysis-0.1.0-Windows-x64"), "zip",
+                                     DIST, "FlowAnalysis")
         iscc = shutil.which("ISCC") or r"C:\Program Files (x86)\Inno Setup 6\ISCC.exe"
         if Path(iscc).is_file():
             subprocess.run([iscc, str(ROOT / "packaging/FlowAnalysis.iss")], check=True)
     else:
-        output = shutil.make_archive(str(ROOT / "dist/FlowAnalysis-0.1.0-Linux"), "gztar",
-                                     ROOT / "dist", "FlowAnalysis")
+        output = shutil.make_archive(str(DIST / "FlowAnalysis-0.1.0-Linux"), "gztar",
+                                     DIST, "FlowAnalysis")
     print(f"Built: {output}")
 
 
