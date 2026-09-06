@@ -1,0 +1,80 @@
+[
+  {
+    "file": "101_DEN084Y5_15_E01_008_clean.fcs",
+    "source": "https://raw.githubusercontent.com/whitews/FlowKit/master/data/8_color_data_set/fcs_files/101_DEN084Y5_15_E01_008_clean.fcs",
+    "bytes": 17412282,
+    "sha256": "55e2e1231e6a2b310856ef0722b59bb938277c446fe392f53dc007983ecead6d"
+  },
+  {
+    "file": "101_DEN084Y5_15_E03_009_clean.fcs",
+    "source": "https://raw.githubusercontent.com/whitews/FlowKit/master/data/8_color_data_set/fcs_files/101_DEN084Y5_15_E03_009_clean.fcs",
+    "bytes": 17040102,
+    "sha256": "d089c36358716d8c9ec5efc8f3c56b21e318aaff9fa0e7dc515bf3eff54009da"
+  },
+  {
+    "file": "den_comp.csv",
+    "source": "https://raw.githubusercontent.com/whitews/FlowKit/master/data/8_color_data_set/den_comp.csv",
+    "bytes": 713,
+    "sha256": "5580e24205a75d93339a42dcde473441e37dfdfc770e7703f5d73cf5dabb564e"
+  },
+  {
+    "file": "8_color_ICS.wsp",
+    "source": "https://raw.githubusercontent.com/whitews/FlowKit/master/data/8_color_data_set/8_color_ICS.wsp",
+    "bytes": 436096,
+    "sha256": "b2715caff97e3a2d6c44077d4e1801296c58c0c762ccb2111a802fcd4213d239"
+  },
+  {
+    "file": "8_color_ICS.xml",
+    "source": "https://raw.githubusercontent.com/whitews/FlowKit/master/data/8_color_data_set/8_color_ICS.xml",
+    "bytes": 16313,
+    "sha256": "86a30d5db16c52292e1f7408211a73496720f9f3c6aefb2b734746d26dc23a21"
+  },
+  {
+    "file": "test_data_diamond_01.fcs",
+    "source": "https://raw.githubusercontent.com/whitews/FlowKit/master/data/simple_diamond_example/test_data_diamond_01.fcs",
+    "bytes": 1600503,
+    "sha256": "58c901bf006bd8d4ce79d234eb3a49f57c9f4a4d47f557cb2f816edf94f51ac1"
+  },
+  {
+    "file": "test_data_diamond_asinh_rect.wsp",
+    "source": "https://raw.githubusercontent.com/whitews/FlowKit/master/data/simple_diamond_example/test_data_diamond_asinh_rect.wsp",
+    "bytes": 18910,
+    "sha256": "e43f37e94cd53cb5e80f47cc55ef1ae5c14e6e23ccfb45fbef4418b45021d107"
+  },
+  {
+    "file": "LICENSE",
+    "source": "https://raw.githubusercontent.com/whitews/FlowKit/master/LICENSE",
+    "bytes": 1511,
+    "sha256": "7ecf1d9651b7033f95d5c8d22790f674b877c87782cbadcd66d4bbfc27655b87"
+  },
+  {
+    "file": "101_DEN084Y5_15_E05_010_clean.fcs",
+    "source": "https://raw.githubusercontent.com/whitews/FlowKit/master/data/8_color_data_set/fcs_files/101_DEN084Y5_15_E05_010_clean.fcs",
+    "bytes": 17119362,
+    "sha256": "3eec1cb3f72477aa35a2ecf0d72361af2e4d502832228336a72464e8af9a563a"
+  },
+  {
+    "file": "spectral_comp_matrix.npy",
+    "source": "https://raw.githubusercontent.com/whitews/FlowKit/master/data/spectral_data/spectral_comp_matrix.npy",
+    "bytes": 12800,
+    "sha256": "5877dbbe472d0f02999b18550f0edb6fe4fd5926a2c1d8b43efe48f095daf5d6"
+  },
+  {
+    "file": "spectral_fluoro_indices.npy",
+    "source": "https://raw.githubusercontent.com/whitews/FlowKit/master/data/spectral_data/spectral_fluoro_indices.npy",
+    "bytes": 512,
+    "sha256": "5e3909dfa2757a97e864c5d570c59966d9d7981c51adf712c9b19a6ad8001120"
+  },
+  {
+    "file": "spectral_raw_events.npy",
+    "source": "https://raw.githubusercontent.com/whitews/FlowKit/master/data/spectral_data/spectral_raw_events.npy",
+    "bytes": 4400128,
+    "sha256": "4a979982d307369d6765c4d22038baa80281920d533b62825a024850f4bf916f"
+  },
+  {
+    "file": "spectral_comp_events.npy",
+    "source": "https://raw.githubusercontent.com/whitews/FlowKit/master/data/spectral_data/truth/spectral_comp_events.npy",
+    "bytes": 4400128,
+    "sha256": "87733362a621852aa301c41b074b1628ca632ecf3e6031bfe25bd82f4546549d"
+  }
+]
