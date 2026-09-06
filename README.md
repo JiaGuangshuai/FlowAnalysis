@@ -6,6 +6,12 @@ An offline, open-source cytometry desktop application for macOS and Windows with
 
 **Version 0.1.0 is a research preview.** See [validation status](docs/VALIDATION.md). Implemented features do not imply numerical equivalence to every FlowJo version, plugin or instrument-specific algorithm.
 
+## Download
+
+[macOS Apple Silicon](https://github.com/JiaGuangshuai/FlowAnalysis/releases/download/v0.1.0/FlowAnalysis-0.1.0-macOS-arm64.zip) · [Windows x64 installer](https://github.com/JiaGuangshuai/FlowAnalysis/releases/download/v0.1.0/FlowAnalysis-0.1.0-Windows-x64-Setup.exe) · [All release files and checksums](https://github.com/JiaGuangshuai/FlowAnalysis/releases/tag/v0.1.0)
+
+Both platform builds passed 29 automated tests and a standalone application check that runs the analysis algorithms in a separate process. The packages include Python; no programming environment is needed.
+
 ## Capabilities
 
 - FlowJo WSP / GatingML import with event-by-event conversion checks; unsupported geometry is explicitly frozen to source-sample membership.

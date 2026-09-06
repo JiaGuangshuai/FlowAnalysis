@@ -6,6 +6,12 @@
 
 当前为 **0.1.0 科研测试版**。实现和验证状态见 [验证记录](docs/VALIDATION.md)，安装方式见 [构建与安装](docs/BUILD.md)。功能范围不代表已与所有版本的 FlowJo 或各仪器软件达到数值等价。
 
+## 下载
+
+[macOS Apple Silicon](https://github.com/JiaGuangshuai/FlowAnalysis/releases/download/v0.1.0/FlowAnalysis-0.1.0-macOS-arm64.zip) · [Windows x64 安装包](https://github.com/JiaGuangshuai/FlowAnalysis/releases/download/v0.1.0/FlowAnalysis-0.1.0-Windows-x64-Setup.exe) · [全部文件与校验值](https://github.com/JiaGuangshuai/FlowAnalysis/releases/tag/v0.1.0)
+
+两个平台均通过 29 项自动测试及独立安装包后台算法运行检查。安装包内含 Python，无需另装编程环境。
+
 ## 功能
 
 - FCS 2.0 / 3.0 / 3.1 读取、元数据查看、处理后子群 FCS 导出。

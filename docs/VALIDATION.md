@@ -2,6 +2,8 @@
 
 2026-09-06，FlowAnalysis 0.1.0。实测：macOS 26.6.2、Apple Silicon arm64、Python 3.12.14、PySide6 6.8.3。依赖版本见 `packaging/requirements-macos-arm64.lock`。
 
+[最终构建记录](https://github.com/JiaGuangshuai/FlowAnalysis/actions/runs/34032432843)：macOS 和 Windows 两个平台均通过 **29 项测试**，并通过独立程序 UI + 后台算法检查。发布代码提交为 `708f936c0b7136f8394b5f58c2a0103f502a0d95`。
+
 ## 完成的检查
 
 - 补偿正负真值回收、通道重排、防重复处理；带背景光谱回收、秩不足拒绝、参考谱估计。
@@ -18,7 +20,7 @@
 
 这些检查不代表与所有 FlowJo 版本、插件和仪器软件完全等价。细胞周期采用独立探索模型；光谱数据为公开数组及转换文件，尚未覆盖多个厂商完整对照采集流程。工作区导入不含插件结果与图版；不支持的门型明确保留为原样本事件索引，不能跨样本复制。
 
-Mac 已本机核对，最低系统版本、Intel Mac、极大数据和各厂家非标准 FCS 尚未全面覆盖。Windows 由 GitHub Actions 在 Windows 环境测试、构建及独立程序验证，状态以实际构建记录为准。
+Mac 已本机核对，最低系统版本、Intel Mac、极大数据和各厂家非标准 FCS 尚未全面覆盖。Windows x64 已在 GitHub Actions 的 Windows 环境完成测试、安装包构建及独立程序验证；尚未在用户个人 Windows 电脑上实测。
 
 ## 重现
 
