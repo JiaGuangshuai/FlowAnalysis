@@ -90,7 +90,8 @@ def save_project(project: Project, path: str | Path):
                     with archive.open(f"arrays/{sample.id}/{key}.npy", "w", force_zip64=True) as handle:
                         np.save(handle, getattr(sample, key), allow_pickle=False)
             archive.writestr("manifest.json", json.dumps(json_clean(manifest), ensure_ascii=False, allow_nan=False))
-        with open(temporary, "rb") as handle:
+        # Windows FlushFileBuffers requires a writable handle.
+        with open(temporary, "rb+") as handle:
             os.fsync(handle.fileno())
         os.replace(temporary, path)
     finally:
