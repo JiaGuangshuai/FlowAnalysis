@@ -29,9 +29,9 @@ from .tasks import TaskManager
 
 
 class MainWindow(QMainWindow):
-    def __init__(self,project=None,recover=True):
+    def __init__(self,project=None,recover=True,settings=None):
         super().__init__()
-        self.settings = QSettings("FlowAnalysis","FlowAnalysis")
+        self.settings = settings if settings is not None else QSettings("FlowAnalysis","FlowAnalysis")
         self.language = self.settings.value("language","zh")
         self.project = project or Project()
         self.project_path = None

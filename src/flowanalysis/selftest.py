@@ -49,12 +49,14 @@ def numerical_smoke():
 
 
 def main(output):
-    from PySide6.QtCore import QTimer
+    from PySide6.QtCore import QTimer, QSettings
     from PySide6.QtWidgets import QApplication
     from flowanalysis.core.demo import demo_project
     from flowanalysis.ui.window import MainWindow
     app = QApplication(["FlowAnalysis-self-test", "-style", "Fusion"])
-    window = MainWindow(demo_project(1000), recover=False)
+    preferences = tempfile.TemporaryDirectory(prefix="flowanalysis-selftest-")
+    settings = QSettings(str(Path(preferences.name)/"preferences.ini"),QSettings.Format.IniFormat)
+    window = MainWindow(demo_project(1000), recover=False,settings=settings)
     window.show()
     app.processEvents()
     report = {"ui": "passed", "tabs": window.tabs.count(), "samples": len(window.project.samples)}
@@ -66,6 +68,7 @@ def main(output):
         window.dirty = False
         window.tasks.cancel()
         window.close()
+        preferences.cleanup()
         app.exit(1 if error else 0)
     try:
         window.switch_language("en")

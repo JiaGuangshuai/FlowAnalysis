@@ -2,6 +2,7 @@ from dataclasses import asdict
 
 import pytest
 from PySide6.QtWidgets import QInputDialog
+from PySide6.QtCore import QSettings
 
 from flowanalysis.core.demo import demo_project
 from flowanalysis.core.model import Transform
@@ -9,8 +10,9 @@ from flowanalysis.ui.window import MainWindow
 
 
 @pytest.fixture
-def window(qtbot):
-    window = MainWindow(demo_project(1000),recover=False)
+def window(qtbot,tmp_path):
+    settings = QSettings(str(tmp_path/"preferences.ini"),QSettings.Format.IniFormat)
+    window = MainWindow(demo_project(1000),recover=False,settings=settings)
     window.show_error = lambda message,*args:pytest.fail(message)
     window.maybe_save = lambda: True
     qtbot.addWidget(window)
