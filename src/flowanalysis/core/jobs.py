@@ -7,6 +7,7 @@ from .gating import masks
 from .io import read_fcs
 from .model import Transform
 from .processing import apply_compensation, apply_unmixing
+from .provenance import software_versions
 
 
 def import_files(paths):
@@ -72,4 +73,5 @@ def advanced_analysis(sample, gate_id, method, channels, parameters):
     result["channels"] = channels
     result["population_events"] = len(ids)
     result["processing"] = sample.processing
+    result["software_versions"] = software_versions()
     return result

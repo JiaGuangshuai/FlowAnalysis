@@ -37,7 +37,22 @@ def fill_table(table, rows):
     table.clear()
     table.setColumnCount(len(headers))
     table.setRowCount(len(rows))
-    table.setHorizontalHeaderLabels(headers)
+    labels = {"sample":"样本", "sample_id":"样本 ID", "group":"样本组", "plate":"板", "well":"孔位",
+              "gate":"群体", "gate_id":"门 ID", "parent_id":"父门 ID", "events":"事件数",
+              "parent_events":"父群体事件数", "percent_parent":"占父群体 %", "percent_total":"占总事件 %",
+              "data_state":"数据状态", "intensity_space":"强度空间", "parameter":"参数", "value":"数值",
+              "statistic":"统计量", "metacluster":"元簇", "time_start":"起始时间", "time_end":"结束时间",
+              "time_mid":"时间中点", "median":"中位数", "mean":"均值", "std":"标准差",
+              "q25":"下四分位数", "q75":"上四分位数", "fold_baseline":"相对基线倍数"}
+    chinese = getattr(table.window(), "language", "en") == "zh"
+    def translated(header):
+        if not chinese:
+            return header
+        if ":" in header:
+            channel, statistic = header.rsplit(":", 1)
+            return channel + ":" + labels.get(statistic, statistic)
+        return labels.get(header, header)
+    table.setHorizontalHeaderLabels([translated(h) for h in headers])
     for r, row in enumerate(rows):
         for c, header in enumerate(headers):
             value = row[header]

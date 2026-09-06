@@ -13,6 +13,7 @@ def numerical_smoke():
     from flowanalysis.core.io import read_fcs, write_fcs, save_project, load_project
     from flowanalysis.core.model import Transform
     from flowanalysis.core.processing import compensate, unmix
+    from flowanalysis.core.provenance import software_versions
 
     rng = np.random.default_rng(40)
     project = demo_project(2000)
@@ -43,7 +44,7 @@ def numerical_smoke():
     dye = np.r_[50000 * 2**rng.normal(0, .15, 1000), 25000 * 2**rng.normal(0, .15, 1000)]
     proliferation(dye, 50000, generations=2)
     assert sum(r["events"] for r in kinetics([0, 1, 9, 10], [1, 2, 3, 4])["rows"]) == 4
-    return {"numerical_worker": "passed", "algorithms": ["FCS", "portable project", "gating", "compensation",
+    return {"numerical_worker": "passed", "software_versions": software_versions(), "algorithms": ["FCS", "portable project", "gating", "compensation",
             "spectral OLS", "UMAP", "t-SNE", "FlowSOM", "cell cycle", "proliferation", "kinetics"]}
 
 

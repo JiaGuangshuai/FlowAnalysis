@@ -8,7 +8,7 @@ hiddenimports = ["flowanalysis.core.compatibility", "flowanalysis.core.jobs", "f
                  "sklearn.utils._cython_blas", "scipy.special._ufuncs_cxx"]
 for package in ["flowkit", "flowio", "flowutils", "flowsom", "umap", "pynndescent", "scanpy"]:
     datas += collect_data_files(package, include_py_files=True)
-for package in ["flowkit", "flowsom", "umap-learn", "scanpy", "anndata", "scverse-misc", "fast-array-utils"]:
+for package in ["flowanalysis-desktop", "flowkit", "flowsom", "umap-learn", "scanpy", "anndata", "scverse-misc", "fast-array-utils"]:
     datas += copy_metadata(package, recursive=True)
 hiddenimports += collect_submodules("flowsom")
 hiddenimports += collect_submodules("umap", filter=lambda name: "parametric" not in name)

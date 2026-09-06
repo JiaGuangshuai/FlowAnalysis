@@ -12,6 +12,7 @@ import numpy as np
 
 from flowanalysis import __version__
 from .model import Gate, Project, Sample
+from .provenance import software_versions
 
 
 def read_fcs(path: str | Path) -> Sample:
@@ -73,7 +74,7 @@ def save_project(project: Project, path: str | Path):
     """Atomic portable ZIP: JSON plus non-pickled arrays. No source-path dependency."""
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
-    manifest = {"schema": 1, "software": __version__, "id": project.id, "name": project.name,
+    manifest = {"schema": 1, "software": __version__, "environment": software_versions(), "id": project.id, "name": project.name,
                 "layouts": project.layouts, "history": project.history, "samples": []}
     descriptor, temporary = tempfile.mkstemp(prefix=".flowanalysis-", dir=path.parent)
     os.close(descriptor)

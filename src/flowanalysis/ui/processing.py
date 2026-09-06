@@ -96,7 +96,7 @@ class ProcessingPane(QWidget):
         self.table.setHorizontalHeaderLabels(columns)
         for i in range(len(rows)):
             for j in range(len(columns)):
-                self.table.setItem(i,j,QTableWidgetItem(f"{matrix[i,j]:.8g}"))
+                self.table.setItem(i,j,QTableWidgetItem(repr(float(matrix[i,j]))))
         self.table.resizeColumnsToContents()
 
     def get_matrix(self):
